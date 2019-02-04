@@ -9,6 +9,14 @@ Forked and extended by @vladi_velikov / https://PluginsBlog.com :
  - providing the array of user handles and the action type as parameters.
  - ability to remove an array of user handles from a twitter list.
 
+CAUTION: Using these scripts with a large number of Twitter accounts can lead to your Twitter account being limited as per The Twitter Rules: https://help.twitter.com/en/rules-and-policies/twitter-rules
+
+The API allows adding/removing up to 100 accounts but the current scripts execute those in a loop to consume the whole list of Twitter accounts you want to handle. This can be considered by Twitter as "spamming activity" when the Twitter list is public as it sends notifications to all users added to the list.
+
+The exact limitations are not clearly stated by Twitter. By experiment as of 1 Jan 2019 no restrictions are imposed when handling ~1500 accounts per day but this can change. If the threshold has been crossed the account is usually limited to prevent both manual and automatic Twitter list editing for the next 24 hours.
+
+IMPORTANT: These scripts are provided as-is and the author/contributor does not take any resposibility for their use or impact.
+
 ## Creating a file with batches of Twitter user handles from CSV.
 	powershell -executionpolicy unrestricted -file .\build-twitter-list-from-csv.ps1
 		-csv TWITTER_HANDLES_CSV -delimiter CSV_DELIMITER -handlecolumn TWITTER_HANDLE_CSV_COLUMN
