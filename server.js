@@ -22,16 +22,18 @@ var success = function (data) {
    
 };
 
-
-//Add members to list via slug/list name 
-twitter.listAddMembers({
-    owner_screen_name:"YOUR_HANDLE",
-    slug:"LIST_NAME_HERE",
-    screen_name:"HANDLE1,HANDLE2,HANDLE3"
-},error,success);
-
-//Add members to list via list_id
-/*twitter.listAddMembers({
-    list_id:227857378,
-    screen_name:"StartupJuncture,revenantarena,indiegamepr"
-},error,success);*/
+if ("add" === process.argv[2]) {
+    //Add members to list via slug/list handle (this is not the user visible name).
+    twitter.listAddMembers({
+        owner_screen_name:"YOUR_HANDLE",
+        slug:process.argv[4],
+        screen_name:process.argv[3]
+    },error,success);	
+} else if ("remove" === process.argv[2]) {
+    //Remove members from list via slug/list handle (this is not the user visible name). 
+    twitter.listRemoveMembers({
+        owner_screen_name:"YOUR_HANDLE",
+        slug:process.argv[4],
+        screen_name:process.argv[3]
+    },error,success);
+}
